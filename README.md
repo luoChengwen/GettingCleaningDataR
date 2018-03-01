@@ -40,7 +40,7 @@ download.file(url,"FQuiz.zip")
 unzip("FQuiz.zip")
 
 setwd("~/UCI HAR Dataset/")
-P<-"~/UCI HAR Dataset/"
+P <- "~/UCI HAR Dataset/"
 library(dplyr)
 activity_label<-read.table("activity_labels.txt")
 act_label<-activity_label[,2]
@@ -52,17 +52,17 @@ features<-as.character(features[,2])
 feature_extract<- grep("mean|std",features)
 feature_extract2<-features[feature_extract]
 
-testP<-paste0(P,"/test/")
+testP <- paste0(P,"/test/")
 setwd(testP)
 subject_test<-read.table("subject_test.txt")
-x_test<-read.table("X_test.txt",sep="")[,feature_extract]
+x_test <-read.table("X_test.txt",sep="")[,feature_extract]
 y_test<-read.table("y_test.txt")
 label_test<-as.character(y_test[,1])
 test_all<-cbind(subject_test,label_test,x_test)
-test_all<-setNames(test_all,c("subject","activity",feature_extract2))
+test_all <- setNames(test_all,c("subject","activity",feature_extract2))
 test_all$status<-"test"
 
-trainP<-paste0(P,"/train/")
+trainP <- paste0(P,"/train/")
 setwd(trainP)
 subject_train<-read.table("subject_train.txt")
 x_train<-read.table("X_train.txt",sep="")[,feature_extract]
