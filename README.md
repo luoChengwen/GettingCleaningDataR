@@ -29,18 +29,14 @@ From the data set in step 4, creates a second, independent tidy data set with th
 
 ###================================================
 ## my code 
-
-
-
-
-
-
+###================================================
 
 
 setwd("~/UCI HAR Dataset/")
 url<-"https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 download.file(url,"FQuiz.zip")
 unzip("FQuiz.zip")
+
 setwd("~/UCI HAR Dataset/")
 P<-"~/UCI HAR Dataset/"
 library(dplyr)
