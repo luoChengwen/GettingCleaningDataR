@@ -27,9 +27,9 @@ Appropriately labels the data set with descriptive variable names.
 From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
 
-###================================================
-## my code 
-###================================================
+##================================================
+# my code 
+##================================================
 
 
 setwd("~/UCI HAR Dataset/")
@@ -44,7 +44,7 @@ activity_label<-read.table("activity_labels.txt")
 act_label<-activity_label[,2]
 
 
-# Extracts only the measurements on the mean and standard deviation for each measurement.
+## Extracts only the measurements on the mean and standard deviation for each measurement.
 features<-read.table("features.txt")
 features<-as.character(features[,2])
 feature_extract<- grep("mean|std",features)
@@ -68,19 +68,19 @@ y_train<-read.table("y_train.txt")
 label_train<-as.character(y_train[,1])
 train_all<-cbind(subject_train,label_train,x_train)
 
-# Appropriately labels the data set with descriptive variable names.
+## Appropriately labels the data set with descriptive variable names.
 train_all<-setNames(train_all,c("subject","activity",feature_extract2))
 train_all$status<-"train"
 
-# Merges the training and the test sets to create one data set.
+## Merges the training and the test sets to create one data set.
 combined_results<-rbind(train_all,test_all)
 
-# Uses descriptive activity names to name the activities in the data set
+## Uses descriptive activity names to name the activities in the data set
 combined_results$activity<-factor(combined_results$activity,labels=act_label)
 combined_results2<-select(combined_results,-status)
 
 library(reshape2)
-#  creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+## creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 cmb<-melt(combined_results2,id=c("subject","activity"))
 tidy_results<-dcast(cmb, subject + activity ~ variable , mean)
 
