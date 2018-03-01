@@ -39,7 +39,7 @@ url<-"https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%2
 download.file(url,"FQuiz.zip")
 unzip("FQuiz.zip")
 
-setwd("~/UCI HAR Dataset/")
+
 P <- "~/UCI HAR Dataset/"
 library(dplyr)
 activity_label<-read.table("activity_labels.txt")
